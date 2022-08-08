@@ -1,0 +1,5 @@
+.cardFood:hover {
+  border-radius: 4px;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #f1f0f0, 20px 20px 50px #f1f0f0;
+}
