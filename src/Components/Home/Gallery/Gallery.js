@@ -42,7 +42,7 @@ const Gallery = () => {
                         return (
                             <div
                                 key={id}
-                                className='cardFood text-center h-96'
+                                className='cardFood text-center h-96 cursor-pointer'
                                 onClick={() => handleFoodDetail(id)}
                             >
                                 <div className=' w-full mx-auto'>
@@ -59,7 +59,7 @@ const Gallery = () => {
                 }
             </div>
             <div className='my-16 text-center'>
-                <button className='bg-[red] py-2 px-4'>Checkout Your Food</button>
+                <button onClick={() => navigate('/checkout')} className=' py-2 px-4 bg-red-500 text-white'>Checkout Your Food</button>
             </div>
         </div>
     );

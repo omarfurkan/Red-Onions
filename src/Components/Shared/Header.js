@@ -21,6 +21,7 @@ const Header = () => {
                 </div>
                 <div className='text-xl font-semibold mt-2'>
                     <Link to='/' className='mr-4'> Home </Link>
+                    <Link to='/blog' className='mr-4'> Blog </Link>
                     {user ? <button onClick={logOut}>Sign out</button> : <Link to='/login'> Login </Link>}
                 </div>
             </nav>

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import backgroundImg from '../../Images/signlog.png';
 import logo from '../../Images/logo2.png'
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebases.init';
 import { useEffect } from 'react';
@@ -10,10 +10,13 @@ import { useEffect } from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
+    let location = useLocation();
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    let from = location.state?.from?.pathname || "/";
 
     const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+
 
     const handleSumbit = event => {
         event.preventDefault();
@@ -26,9 +29,9 @@ const Login = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/')
+            navigate(from, { replace: true });
         }
-    }, [user, navigate])
+    }, [user, navigate, from])
 
 
     return (
@@ -45,7 +48,7 @@ const Login = () => {
                         <br />
                         {error && <p className='text-red-500 font-semibold'>{error.message}</p>}
                         {loading && <p>Loading</p>}
-                        <input className='bg-red-500 w-full rounded-lg my-2 py-4 px-4 text-lg text-white' type="submit" value="Login" />
+                        <input className='bg-red-500 w-full rounded-lg my-2 py-4 px-4 text-lg text-white cursor-pointer' type="submit" value="Login" />
                     </div>
                 </form>
                 <p onClick={() => navigate('/signup')} className='text-red-500 text-center cursor-pointer'> Create an Account</p>

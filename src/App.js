@@ -5,6 +5,9 @@ import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
 import FoodDetail from './Components/FoodDetail/FoodDetail';
 import Signup from './Components/Signup/Signup';
+import CheckOut from './Components/CheckOut/CheckOut';
+import RequireAuth from './Components/RequireAuth/RequireAuth';
+import Blog from './Components/Blog/Blog';
 
 function App() {
   return (
@@ -12,9 +15,19 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/food/:foodId" element={<FoodDetail />} />
+        <Route path="/blog" element={<Blog />} />
+        <Route path="/food/:foodId" element={
+          <RequireAuth>
+            <FoodDetail />
+          </RequireAuth>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/checkout" element={
+          <RequireAuth>
+            <CheckOut />
+          </RequireAuth>
+        } />
       </Routes>
     </div>
   );
